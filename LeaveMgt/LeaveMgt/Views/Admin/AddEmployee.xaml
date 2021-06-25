@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Visual="Material"
+             xmlns:vm="clr-namespace:LeaveMgt.ViewModels"
+             x:Class="LeaveMgt.Views.AddEmployee">
+
+    <ContentPage.BindingContext>
+        <vm:AddEmployeeViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="50,auto">
+            <StackLayout Background="#FF1F356F" Grid.Row="0" HeightRequest="50">
+                <Label Text="Add Employee" TextColor="#fff" FontSize="20" VerticalOptions="CenterAndExpand" Padding="10,0"/>
+            </StackLayout>
+            
+            <StackLayout Grid.Row="1">
+                <ScrollView>
+                    <StackLayout Padding="10,0" BackgroundColor="#F5F5F5">
+                        <Frame BackgroundColor="#fff" CornerRadius="10">
+                            <StackLayout>
+                                <Label Text="Employee's Information" TextColor="#FF1F356F" FontSize="20"/>
+                            <Entry Placeholder="First Name" Text="{Binding FirstName}"/>
+                            <Entry Placeholder="Last Name" Text="{Binding LastName}" />
+                                <Label Text="Date Of Birth:"/>
+                                <DatePicker x:Name="dob" MinimumDate="01/01/1900" MaximumDate="01/01/2020" DateSelected="SelectedDate" Date="{Binding DateOfBirth}" />
+                            <Entry Placeholder="Mobile No." Text="{Binding Telephone}" />
+                            <Picker x:Name="RolePicker" Title="Select Designation" SelectedIndexChanged="RolePicker_OnSelectedIndexChanged" SelectedItem="{Binding UserRole}"/>
+                                <Entry Placeholder="Home Address" Text="{Binding Address}" />
+                                <Label Text="Date Of Employment:"/>
+                                <DatePicker MinimumDate="01/01/1900" MaximumDate="01/01/2020" DateSelected="SelectedDate1" Date="{Binding EmploymentDate}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame BackgroundColor="#fff" CornerRadius="10">
+                            <StackLayout>
+                                <Label Text="Credentials" TextColor="#FF1F356F" FontSize="20"/>
+                                <Entry Placeholder="Email" Text="{Binding Email}"/>
+                                <Entry Placeholder="Password" Text="{Binding Password}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Button Text="ADD" TextColor="#fff" BackgroundColor="#FF1F356F" FontSize="20" HeightRequest="50" CornerRadius="10" Margin="5" Command="{Binding AddEmployeeCommand}"/>
+                    </StackLayout>
+                                       
+                </ScrollView>
+            </StackLayout>
+           
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
